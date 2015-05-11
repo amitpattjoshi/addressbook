@@ -22,9 +22,9 @@ import addressbook.gumtree.ebay.model.Contact;
 
 public class AddressBookTest {
 
-	private AddressBook addressbookObj;
+	private AddressBookImpl addressbookObj;
 	private final String FILE_PATH = ".//src//main//resources//addressbook";
-	
+
 	@Mock
 	private Map<String, List<Contact>> cacheContactMap = new HashMap<>();
 
@@ -32,11 +32,11 @@ public class AddressBookTest {
 	public void setup() throws Exception {
 		MockitoAnnotations.initMocks(this);
 
-		addressbookObj = new AddressBook();
+		addressbookObj = new AddressBookImpl();
 		addressbookObj.setAddressBookFileName(FILE_PATH);
 
 		// Set private Field
-		Field field = AddressBook.class.getDeclaredField("cacheContactMap");
+		Field field = AddressBookImpl.class.getDeclaredField("cacheContactMap");
 		field.setAccessible(true);
 		field.set(addressbookObj, cacheContactMap);
 	}
@@ -84,7 +84,7 @@ public class AddressBookTest {
 		Assert.assertEquals(5, addressbookObj.getAllContacts().size());
 	}
 
-//START - TEST CASES FOR EXERCISE
+	// START - TEST CASES FOR EXERCISE
 	@Test
 	public void shouldReturnTotalNumberOfMaleCountInTheAddressBookTest()
 			throws Exception {
@@ -105,25 +105,6 @@ public class AddressBookTest {
 				addressbookObj.findHowManyDaysBillIsOlderThanPaul());
 	}
 
-//END - TEST CASES FOR EXERCISE
-
-	
-	@Test
-	public void shouldReturnNegativeValueIfContactListInTheAddressBookIsNullTest()
-			throws Exception {
-
-	}
-
-	@Test
-	public void shouldReturnNegativeValueIfContactListInTheAddressBookDoesNotHaveBillsContactTest()
-			throws Exception {
-
-	}
-
-	@Test
-	public void shouldReturnNegativeValueIfContactListInTheAddressBookDoesNotHavePaulsContactTest()
-			throws Exception {
-
-	}
+	// END - TEST CASES FOR EXERCISE
 
 }

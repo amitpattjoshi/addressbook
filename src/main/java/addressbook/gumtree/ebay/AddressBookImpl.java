@@ -18,7 +18,7 @@ import org.joda.time.Days;
 import addressbook.gumtree.ebay.model.Contact;
 import adressbook.gumtree.ebay.util.DateComparator;
 
-public class AddressBook {
+public class AddressBookImpl implements AddressBookIntf {
 
 	private String filename;
 	private List<Contact> contactList = new ArrayList<Contact>();
@@ -102,8 +102,8 @@ public class AddressBook {
 		Contact contact = null;
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		try {
-			String[] lines = readAddressBookFile();
+	
+		String[] lines = readAddressBookFile();
 
 			for (String s : lines) {
 				tokensArray = new String[3];
@@ -119,8 +119,5 @@ public class AddressBook {
 			// cache the list
 			cacheContactMap.put("contactList", contactList);
 			return contactList;
-		} finally {
 		}
 	}
-
-}

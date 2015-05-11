@@ -1,10 +1,9 @@
 package addressbook.gumtree.ebay.model;
 
-import java.util.Comparator;
 import java.util.Date;
 
 public class Contact {
-
+	
 	private String name;
 	private String gender;
 	private Date date;
